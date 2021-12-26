@@ -105,7 +105,8 @@ void ROS2Template::run(){
     }
 
     for(int i = 0, size = pointcloud.points.size(); i < size; i++){
-      if(pointcloud.points[i].x < 1.0 || pointcloud.points[i].y < 0.5 || pointcloud.points[i].y > -0.5){
+      if((pointcloud.points[i].x >  0   && pointcloud.points[i].x < 1.5) &&
+         (pointcloud.points[i].y > -0.5 && pointcloud.points[i].y < 0.5)){
         isObstacleNear_ = true;
       }else isObstacleNear_ = false;
     }
