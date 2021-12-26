@@ -65,13 +65,15 @@ void ROS2Template::run(){
   // ループ周期の登録
   rclcpp::WallRate loop_rate(30);
 
-  sensor_msgs::msg::PointCloud pointcloud;
+  sensor_msgs::msg::PointCloud pointcloud = pointcloud_;
 
   float angle = 90;
   int time_count = 0;
 
   while(rclcpp::ok()){
     geometry_msgs::msg::Pose pose;
+
+    RCLCPP_INFO_STREAM(this->get_logger(), "flag: " << isObstacleNear_);
 
     if(isObstacleNear_ == false){
       if(time_count < 150) angle = 0;
